@@ -10,19 +10,25 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@tanstack/react-query": "^5.8.7",
+    "axios": "^1.6.2",
+    "date-fns": "^2.30.0",
     "dotenv": "^16.3.1",
     "firebase": "^10.6.0",
     "localforage": "^1.10.0",
     "match-sorter": "^6.3.1",
     "react": "^18.2.0",
+    "react-date-range": "^1.4.0",
     "react-dom": "^18.2.0",
     "react-helmet-async": "^2.0.1",
     "react-hook-form": "^7.48.2",
     "react-icons": "^4.12.0",
+    "react-loader-spinner": "^5.4.5",
     "react-router-dom": "^6.20.0",
     "react-simple-captcha": "^9.3.0",
     "sort-by": "^1.2.0",
-    "sweetalert2": "^11.10.1"
+    "sweetalert2": "^11.10.1",
+    "swiper": "^11.0.5"
   },
   "devDependencies": {
     "@types/react": "^18.2.37",

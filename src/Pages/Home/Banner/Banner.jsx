@@ -1,4 +1,5 @@
-import banner from "../../../assets/images/banner-image.png";
+import banner from "../../../assets/images/banner-illus.png";
+import BannerCart from "../BannerCart/BannerCart";
 
 const Banner = () => {
   return (
@@ -56,6 +57,7 @@ const Banner = () => {
           </div>
         </div>
       </div>
+      <BannerCart/>
     </div>
   );
 };

@@ -8,7 +8,7 @@ const Navbar = () => {
   const emailUs = user?.email;
   const userName = user?.displayName;
   const displayPic = user?.photoURL;
-  console.log(user)
+  // console.log(user)
   
   const handleLogOut = () => {
     logOut()
@@ -19,6 +19,9 @@ const Navbar = () => {
     <>
       <li className="font-semibold uppercase">
         <NavLink to="/">Home</NavLink>
+      </li>
+      <li className="font-semibold uppercase">
+        <NavLink to="/allContest">All Contest</NavLink>
       </li>
     </>
   );
