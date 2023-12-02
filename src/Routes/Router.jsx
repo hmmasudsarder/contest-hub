@@ -55,10 +55,10 @@ const Router = createBrowserRouter([
     //     path: 'dashboard',
     //     element: <PrivateRoutes><Dashboard></Dashboard></PrivateRoutes>,
     //     children: [
-    //         {
-    //             path: 'participated',
-    //             element: <Participated></Participated>
-    //         },
+            // {
+            //     path: 'participated',
+            //     element: <Participated></Participated>
+            // },
     //         // admin routes 
     //         {
     //             path: 'user',
@@ -67,7 +67,7 @@ const Router = createBrowserRouter([
     //     ]
     // }
     {
-        path: '/dashboard',
+        path: 'dashboard',
         element: <DashboardLayout/>,
         children: [
             {
@@ -75,8 +75,9 @@ const Router = createBrowserRouter([
                 element: <AddContest/>
             },
             {
-                path: 'contestList',
-                element: <ContestList/>
+                path: "contestList",
+                element: <ContestList/>,
+            
             }
         ]
     }

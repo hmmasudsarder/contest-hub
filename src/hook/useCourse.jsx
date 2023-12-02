@@ -8,9 +8,9 @@ const useCourse = () => {
     const axiosSecure = useAxiosSecure()
     const {user} = useContext(AuthContext)
     const{ refetch, data: course = []} = useQuery({
-        queryKey: ['course', user.email],
+        queryKey: ['course', user?.email],
         queryFn: async () => {
-            const res = await axiosSecure.get(`/parces?email=${user.email}`);
+            const res = await axiosSecure.get(`/parces?email=${user?.email}`);
             return res.data;
         }
     });

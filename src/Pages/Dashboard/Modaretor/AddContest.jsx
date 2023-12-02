@@ -5,9 +5,11 @@ import useAxiosOpen from "../../../hook/useAxiosOpen";
 import { AuthContext } from "../../../Provider/AuthProvider";
 import useAxiosSecure from "../../../hook/useAxiosSecure";
 import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 const image_key= import.meta.env.VITE_IMAGE_KEY;
 const image_api=`https://api.imgbb.com/1/upload?key=${image_key}`;
 const AddContest = () => {
+    const navigate = useNavigate();
     const {user} = useContext(AuthContext);
     const axiosOpen = useAxiosOpen();
     const axiosSecure = useAxiosSecure();
@@ -38,7 +40,7 @@ const AddContest = () => {
     const moderator = {
         name: user?.displayName,
         image: user?.photoURL,
-        email: user.email
+        email: user?.email
     }
 
     const newContest = {
@@ -62,6 +64,7 @@ const AddContest = () => {
                 showConfirmButton: false,
                 timer: 1500
               });
+              navigate('/dashboard/contestList')
          }
    
   };
