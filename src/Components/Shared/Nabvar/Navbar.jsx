@@ -5,7 +5,7 @@ import disPic from "../../../assets/images/user.png";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
-  const emailUs = user?.email;
+  // const emailUs = user?.email;
   const userName = user?.displayName;
   const displayPic = user?.photoURL;
   // console.log(user)
@@ -22,6 +22,15 @@ const Navbar = () => {
       </li>
       <li className="font-semibold uppercase">
         <NavLink to="/allContest">All Contest</NavLink>
+      </li>
+      <li>
+      {user ? 
+            ""
+           : 
+            <Link to="/login">
+              <button className="font-semibold uppercase">Login</button>
+            </Link>
+          }
       </li>
     </>
   );
@@ -55,7 +64,7 @@ const Navbar = () => {
           </div>
           <Link to="/" className="normal-case text-xl">
             <img
-              className="w-[100px] h-[50px] rounded-lg"
+              className="w-[100px] h-[50px] rounded-lg lg:block  md:hidden min-[770]:hidden "
               src="https://i.ibb.co/CKDzjjn/download-10.jpg"
               alt=""
             />
@@ -63,13 +72,7 @@ const Navbar = () => {
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{navLinks}</ul>
-          {user ? 
-            ""
-           : 
-            <Link to="/login">
-              <button className="font-semibold uppercase">Login</button>
-            </Link>
-          }
+          
         </div>
         <div className="navbar-end -ml-20">
           <div className="dropdown">
@@ -98,7 +101,7 @@ const Navbar = () => {
                 {user?.displayName ? <p>{userName}</p> : " " } 
               </li>
               <li>
-                <Link to="/addProduct">Add a Food Item</Link>
+                <Link to="/dashboard">DASHBOARD</Link>
               </li>
               <li className="">
                 {user?.email ? (

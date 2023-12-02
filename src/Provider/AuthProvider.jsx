@@ -10,11 +10,13 @@ import {
   updateProfile,
 } from "firebase/auth";
 import { app } from "../firebase/firebase.config";
+import useAxiosOpen from "../hook/useAxiosOpen";
 export const AuthContext = createContext();
 const auth = getAuth(app);
 const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
-  const [user, setUser] = useState()
+  const [user, setUser] = useState();
+  const axiosOpen = useAxiosOpen()
   const googleProvider = new GoogleAuthProvider();
 
   // create user email and password
@@ -49,24 +51,24 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, currentUser => {
         setUser(currentUser)
-        // if(currentUser){
-        //     const userHistory = {email: currentUser.email};
-        //     axiosPublic.post('/jwt', userHistory)
-        //     .then(res =>{
-                // if(res.data.token){
-                //     localStorage.setItem('access-token', res.data.token)
-                // }
-            // })
-        // }
-        // else{
-        //     localStorage.removeItem('access-token')
-        // }
+        if(currentUser){
+            const userHistory = {email: currentUser.email};
+            axiosOpen.post('/jwt', userHistory)
+            .then(res =>{
+                if(res.data.token){
+                    localStorage.setItem('access-token', res.data.token)
+                }
+            })
+        }
+        else{
+            localStorage.removeItem('access-token')
+        }
         setLoading(false)
     });
     return () => {
         unsubscribe()
     }
-}, []);
+}, [axiosOpen]);
 
 
   const authInfo = {

@@ -4,6 +4,7 @@ import { loadCaptchaEnginge, validateCaptcha, LoadCanvasTemplate } from "react-s
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import SocialLogin from "../SocialLogin/SocialLogin";
 import { Helmet } from "react-helmet-async";
+import img from "../../../assets/images/authentication.gif";
 
 const Login = () => {
   const [disabled, setDisabled] = useState(true);
@@ -42,12 +43,8 @@ const Login = () => {
       </Helmet>
       <div className="hero-content flex-col lg:flex-row-reverse">
         <div className="text-center md:w-1/2 lg:text-left">
-          <h1 className="text-5xl font-bold">Login now!</h1>
-          <p className="py-6">
-            Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
-            excepturi exercitationem quasi. In deleniti eaque aut repudiandae et
-            a id nisi.
-          </p>
+          <h1 className="text-5xl font-bold text-center z-40">Login now!</h1>
+          <img src={img} alt="" />
         </div>
         <div className="card md:w-1/2 max-w-sm shadow-2xl bg-base-100">
           <form onSubmit={handleLogin} className="card-body">

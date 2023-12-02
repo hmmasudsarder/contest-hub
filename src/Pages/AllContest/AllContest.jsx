@@ -37,7 +37,7 @@ const AllContest = () => {
           </div>
         </form>
       </div>
-      <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-8 container mx-auto">
+      <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-8 container mx-auto">
         {
             contests.map(contest => <AllContestCart key={contest._id} contest={contest}></AllContestCart>)
         }

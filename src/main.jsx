@@ -8,15 +8,16 @@ import 'react-date-range/dist/theme/default.css';
 import AuthProvider from "./Provider/AuthProvider";
 import { HelmetProvider } from "react-helmet-async";
 import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
+import Container from "./Components/Shared/Container/Container";
 const queryClient = new QueryClient()
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <AuthProvider>
       <QueryClientProvider client={queryClient}>
       <HelmetProvider>
-        <div className="max-w-screen-xl mx-auto">
+        <Container>
           <RouterProvider router={Router}></RouterProvider>
-        </div>
+        </Container>
       </HelmetProvider>
       </QueryClientProvider>
     </AuthProvider>

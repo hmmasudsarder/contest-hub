@@ -5,10 +5,13 @@ import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../../Provider/AuthProvider";
 import { Helmet } from "react-helmet-async";
+import useAxiosOpen from "../../../hook/useAxiosOpen";
+import img from "../../../assets/images/authentication.gif"
 
 const Register = () => {
   const { createUser, updateUserProfile } = useContext(AuthContext);
   const navigate = useNavigate();
+  const axiosOpen = useAxiosOpen();
   const {
     register,
     handleSubmit,
@@ -16,49 +19,43 @@ const Register = () => {
     formState: { errors },
   } = useForm();
   const onSubmit = (data) => {
-    console.log(data.name)
-    createUser(data.email, data.password)
-    .then(() => {
+    // console.log(data.name)
+    createUser(data.email, data.password).then(() => {
       updateUserProfile(data.name, data.PhotoURL)
         .then(() => {
-        //   const userInfo = {
-        //     name: data.name,
-        //     email: data.email,
-        //   };
-          console.log("User Profile Update");
-        //   axiosPublic.post("/users", userInfo).then((res) => {
-        //     console.log(res.data);
-        //     if (res.data.insertedId) {
-        //       reset();
-        //       Swal.fire({
-        //         position: "top-center",
-        //         icon: "success",
-        //         title: "Your Sign Up successFully",
-        //         showConfirmButton: false,
-        //         timer: 1500,
-        //       });
-        //       navigate("/");
-        //     }
-        //   });
+          const userInfo = {
+            name: data.name,
+            email: data.email,
+          };
+          // console.log("User Profile Update");
+          axiosOpen.post("/users", userInfo).then((res) => {
+            // console.log("user added to the database", res.data);
+            if (res.data.insertedId) {
+              reset();
+              Swal.fire({
+                position: "top-center",
+                icon: "success",
+                title: "Your Sign Up successFully",
+                showConfirmButton: false,
+                timer: 1500,
+              });
+              navigate("/");
+            }
+          });
         })
         .catch((error) => console.log(error));
       // console.log(loggedUser);
     });
-    console.log(data);
+    // console.log(data);
   };
   return (
     <div className="hero min-h-screen bg-base-200">
-        <Helmet>
-            <title>Contest-Hub Sign Up</title>
-        </Helmet>
+      <Helmet>
+        <title>Contest-Hub Sign Up</title>
+      </Helmet>
       <div className="hero-content flex-col lg:flex-row-reverse">
         <div className="text-center lg:text-left">
-          <h1 className="text-5xl font-bold">Sign Up Now!</h1>
-          <p className="py-6">
-            Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
-            excepturi exercitationem quasi. In deleniti eaque aut repudiandae et
-            a id nisi.
-          </p>
+          <img src={img} alt="" />
         </div>
         <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
           <form onSubmit={handleSubmit(onSubmit)} className="card-body">
