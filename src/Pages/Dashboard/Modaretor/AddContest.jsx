@@ -3,11 +3,16 @@ import AddForm from "../../../Components/Form/AddForm";
 import { useContext, useState } from "react";
 import useAxiosOpen from "../../../hook/useAxiosOpen";
 import { AuthContext } from "../../../Provider/AuthProvider";
+import useAxiosSecure from "../../../hook/useAxiosSecure";
+import Swal from "sweetalert2";
 const image_key= import.meta.env.VITE_IMAGE_KEY;
 const image_api=`https://api.imgbb.com/1/upload?key=${image_key}`;
 const AddContest = () => {
     const {user} = useContext(AuthContext);
     const axiosOpen = useAxiosOpen();
+    const axiosSecure = useAxiosSecure();
+    const [loading, setLoading] = useState(false);
+    const [uploadButtonText, setUploadButton] = useState('Upload Image')
     const [dates, setDates] = useState({
         startDate: new Date(),
         endDate: new Date(),
@@ -48,11 +53,23 @@ const AddContest = () => {
          from,
         moderator
          };
-    console.table(newContest)
+         const resultItem = await axiosSecure.post('/contest', newContest)
+         if(resultItem.data.acknowledged){
+            Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "Your contest has been saved",
+                showConfirmButton: false,
+                timer: 1500
+              });
+         }
    
   };
   const handleDates = ranges => {
     setDates(ranges.selection)
+  }
+  const handleImageChange = image => {
+    setUploadButton(image.name)
   }
   return (
     <div>
@@ -63,6 +80,9 @@ const AddContest = () => {
       handleSubmit={handleSubmit} 
       handleDates={handleDates} 
       dates={dates}
+      handleImageChange={handleImageChange}
+      loading={loading}
+      uploadButtonText={uploadButtonText}
       />
     </div>
   );
