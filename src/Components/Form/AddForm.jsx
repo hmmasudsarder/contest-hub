@@ -143,12 +143,10 @@ const AddForm = ({
                 <label className="label">
                 <select name="category" className="input input-bordered w-full">
                   <option value="">Select Contest</option>
-                  <option value="volvo">VOLVO</option>
-                  <option value="toyota">TOYOTA</option>
-                  <option value="bmw">BMW</option>
-                  <option value="audi">AUDI</option>
-                  <option value="rangerover">Range Rover</option>
-                  <option value="tata">TATA</option>
+                  <option value="gaming">Gaming</option>
+                  <option value="business">Business Contest</option>
+                  <option value="medical">medical Contest</option>
+                  <option value="article">article Contest</option>
                 </select>
               </label>
               </div>
