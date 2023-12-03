@@ -3,7 +3,6 @@ import{ DateRange }from "react-date-range";
 // 
 const Calender = ({ value, handleSelect, course }) => {
     const totalDays = formatDistance(new Date(course.to), new Date(course.from))
-    console.log(totalDays)
     return (
       <div className="rounded-xl border border-neutral-200 overflow-hidden bg-white">
         <div className="flex item-center gap-1 p-4">

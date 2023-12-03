@@ -10,6 +10,7 @@ import PaymentDetails from "../Pages/Payment/PaymentDetails";
 import DashboardLayout from "../Layout/Dashboard/DashboardLayout";
 import AddContest from "../Pages/Dashboard/Modaretor/AddContest";
 import ContestList from "../Pages/Dashboard/Modaretor/ContestList";
+import Profile from "../Pages/Dashboard/Both/Profile";
 // import Dashboard from "../Layout/Dashboard/Dashboard";
 // import Participated from "../Pages/Dashboard/Participated/Participated";
 // import AllUser from "../Pages/Dashboard/AllUser/AllUser";
@@ -60,10 +61,7 @@ const Router = createBrowserRouter([
             //     element: <Participated></Participated>
             // },
     //         // admin routes 
-    //         {
-    //             path: 'user',
-    //             element: <AllUser></AllUser>
-    //         }
+    //         
     //     ]
     // }
     {
@@ -78,7 +76,15 @@ const Router = createBrowserRouter([
                 path: "contestList",
                 element: <ContestList/>,
             
-            }
+            },
+            {
+                path: 'profile',
+                element: <PrivateRoutes><Profile/></PrivateRoutes>
+            },
+            // {
+            //                 path: 'user',
+            //                  element: <AllUser></AllUser>
+            // }
         ]
     }
 ])

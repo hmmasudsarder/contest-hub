@@ -15,8 +15,7 @@ const Sidebar = () => {
   const navigate = useNavigate()
   const [toggle, setToggle] = useState(false)
   const [isActive, setActive] = useState(false)
-  const {logOut} = useContext(AuthContext)
-console.log(toggle)
+  const {logOut} = useContext(AuthContext);
   //   For guest/host menu item toggle button
   const toggleHandler = event => {
     setToggle(event.target.checked)

@@ -1,10 +1,10 @@
 import { Helmet } from 'react-helmet-async';
 import useCourse from "../../../hook/useCourse";
+import ContestListCart from './ContestListCart';
 // import { useLoaderData } from "react-router-dom";
 
 const ContestList = () => {
-    const [course] = useCourse();
-    console.log(course)
+    const [courses] = useCourse();
   return (
     <>
       <Helmet>
@@ -34,7 +34,7 @@ const ContestList = () => {
                       scope='col'
                       className='px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal'
                     >
-                      Price{course.length}
+                      Price
                     </th>
                     <th
                       scope='col'
@@ -62,7 +62,10 @@ const ContestList = () => {
                     </th>
                   </tr>
                 </thead>
-                <tbody>{/* Room row data */}</tbody>
+                <tbody>
+                  {
+                    courses.map(course => <ContestListCart key={course._id} course={course}/>)
+                  }</tbody>
               </table>
             </div>
           </div>

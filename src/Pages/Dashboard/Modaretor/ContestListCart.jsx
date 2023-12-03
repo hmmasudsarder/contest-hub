@@ -1,6 +1,6 @@
 import { format } from 'date-fns'
 
-const ContestListCart = ({ room }) => {
+const ContestListCart = ({ course }) => {
   return (
     <tr>
       <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
@@ -9,30 +9,30 @@ const ContestListCart = ({ room }) => {
             <div className='block relative'>
               <img
                 alt='profile'
-                src={room?.image}
+                src={course?.image}
                 className='mx-auto object-cover rounded h-10 w-15 '
               />
             </div>
           </div>
           <div className='ml-3'>
-            <p className='text-gray-900 whitespace-no-wrap'>{room?.title}</p>
+            <p className='text-gray-900 whitespace-no-wrap'>{course?.title}</p>
           </div>
         </div>
       </td>
       <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
-        <p className='text-gray-900 whitespace-no-wrap'>{room?.location}</p>
+        <p className='text-gray-900 whitespace-no-wrap'>{course?.location}</p>
       </td>
       <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
-        <p className='text-gray-900 whitespace-no-wrap'>${room?.price}</p>
+        <p className='text-gray-900 whitespace-no-wrap'>${course?.price}</p>
       </td>
       <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
         <p className='text-gray-900 whitespace-no-wrap'>
-          {format(new Date(room?.from), 'P')}
+          {/* {format(new Date(course?.from), 'P')} */}
         </p>
       </td>
       <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
         <p className='text-gray-900 whitespace-no-wrap'>
-          {format(new Date(room?.to), 'P')}
+          {/* {format(new Date(course?.to), 'P')} */}
         </p>
       </td>
       <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>

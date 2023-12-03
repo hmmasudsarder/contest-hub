@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 
 const AllContestCart = ({ contest }) => {
   const { name, img, attempted, type, description, _id } = contest;
-  // console.log(contest)
 
   return (
     <div className="relative flex flex-col text-gray-700 bg-white shadow-md w-96 rounded-xl bg-clip-border">
