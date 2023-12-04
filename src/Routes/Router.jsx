@@ -13,7 +13,7 @@ import ContestList from "../Pages/Dashboard/Modaretor/ContestList";
 import Profile from "../Pages/Dashboard/Both/Profile";
 // import Dashboard from "../Layout/Dashboard/Dashboard";
 // import Participated from "../Pages/Dashboard/Participated/Participated";
-// import AllUser from "../Pages/Dashboard/AllUser/AllUser";
+import AllUser from "../Pages/Dashboard/AllUser/AllUser";
 
 
 const Router = createBrowserRouter([
@@ -24,19 +24,19 @@ const Router = createBrowserRouter([
             {
                 path: '/',
                 element: <Home></Home>,
-                loader: () => fetch('http://localhost:4000/contest')
+                loader: () => fetch('https://contest-hub-server-hazel.vercel.app/contest')
             },
             {
                 path: '/allContest',
                 element: <AllContest></AllContest>,
-                loader: () => fetch('http://localhost:4000/allContest')
+                loader: () => fetch('https://contest-hub-server-hazel.vercel.app/allContest')
             },
             {
                 path: '/singleContest/:id',
                 element:<PrivateRoutes>
                     <SinglePage></SinglePage>
                 </PrivateRoutes>,
-                loader: ({params}) => fetch(`http://localhost:4000/contest/${params.id}`)
+                loader: ({params}) => fetch(`https://contest-hub-server-hazel.vercel.app/contest/${params.id}`)
             },
             {
                 path: '/contestDetails/:id',
@@ -54,7 +54,7 @@ const Router = createBrowserRouter([
     },
     // {
     //     path: 'dashboard',
-    //     element: <PrivateRoutes><Dashboard></Dashboard></PrivateRoutes>,
+        // element: <PrivateRoutes><Dashboard></Dashboard></PrivateRoutes>,
     //     children: [
             // {
             //     path: 'participated',
@@ -81,10 +81,10 @@ const Router = createBrowserRouter([
                 path: 'profile',
                 element: <PrivateRoutes><Profile/></PrivateRoutes>
             },
-            // {
-            //                 path: 'user',
-            //                  element: <AllUser></AllUser>
-            // }
+            {
+                            path: 'user',
+                             element: <AllUser></AllUser>
+            }
         ]
     }
 ])

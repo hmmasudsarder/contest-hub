@@ -13,13 +13,13 @@ const SinglePageDetails = ({ course }) => {
               "
         >
           <div>Hosted by </div>
-
+            <h1>{course?.moderator?.name}</h1>
           <img
             className="rounded-full"
             height="30"
             width="30"
             alt="Avatar"
-            src=""
+            src={course?.moderator?.image}
           />
         </div>
         <div

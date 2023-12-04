@@ -1,8 +1,11 @@
-import { Dialog, Transition } from '@headlessui/react'
-import { format } from 'date-fns'
-import { Fragment } from 'react'
-
-const BookingModal = ({ closeModal, isOpen, bookingInfo }) => {
+import { Dialog, Transition } from '@headlessui/react';
+import { Elements } from '@stripe/react-stripe-js';
+import { Fragment } from 'react';
+import CheckoutForm from './CheckOutForm';
+import { loadStripe } from '@stripe/stripe-js';
+const stripePromise = loadStripe(import.meta.env.VITE_PAYMENT_PK);
+const Booking = ({ closeModal, isOpen, bookingInfo }) => {
+  // console.log(bookingInfo)
   return (
     <Transition appear show={isOpen} as={Fragment}>
       <Dialog as='div' className='relative z-10' onClose={closeModal}>
@@ -37,34 +40,30 @@ const BookingModal = ({ closeModal, isOpen, bookingInfo }) => {
                   Review Info Before Reserve
                 </Dialog.Title>
                 <div className='mt-2'>
+                  {/* <p className='text-sm text-gray-500'>
+                    Room: {bookingInfo?.title}
+                  </p> */}
+                </div>
+                <div className='mt-2'>
                   <p className='text-sm text-gray-500'>
-                    Room: {bookingInfo.title}
+                    Winning Price: {bookingInfo?.cartItem?.prize}
                   </p>
                 </div>
                 <div className='mt-2'>
                   <p className='text-sm text-gray-500'>
-                    Location: {bookingInfo.location}
+                    Guest: {bookingInfo?.guest?.name}
                   </p>
                 </div>
                 <div className='mt-2'>
                   <p className='text-sm text-gray-500'>
-                    Guest: {bookingInfo.guest.name}
-                  </p>
-                </div>
-                <div className='mt-2'>
-                  <p className='text-sm text-gray-500'>
-                    From: {format(new Date(bookingInfo.from), 'PP')} - To:{' '}
-                    {format(new Date(bookingInfo.to), 'PP')}
-                  </p>
-                </div>
-
-                <div className='mt-2'>
-                  <p className='text-sm text-gray-500'>
-                    Price: $ {bookingInfo.price}
+                    Price: $ {bookingInfo?.cartItem?.price}
                   </p>
                 </div>
                 <hr className='mt-8 ' />
                 {/* Card data form */}
+                <Elements stripe={stripePromise}>
+                  <CheckoutForm closeModal={closeModal} bookingInfo={bookingInfo}/>
+                </Elements>
               </Dialog.Panel>
             </Transition.Child>
           </div>
@@ -74,4 +73,4 @@ const BookingModal = ({ closeModal, isOpen, bookingInfo }) => {
   )
 }
 
-export default BookingModal
+export default Booking

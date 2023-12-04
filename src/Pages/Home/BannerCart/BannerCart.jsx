@@ -11,7 +11,7 @@ const BannerCart = () => {
         subHeading="must popular participation"
         heading="top popular contest"
       ></SectionsTitle>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-6 gap-6 mt-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-5 gap-10 mx-auto mt-6">
         {
             contests.map(contest => <div key={contest._id} className='col-span-1 cursor-pointer group'>
             <Link to={`/singleContest/${contest._id}`}>

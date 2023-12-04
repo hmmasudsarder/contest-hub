@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const axiosOpen = axios.create({
-    baseURL: 'http://localhost:4000'
+    baseURL: 'https://contest-hub-server-hazel.vercel.app'
 })
 const useAxiosOpen = () => {
     return axiosOpen;

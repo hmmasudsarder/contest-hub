@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom";
 
 const AllContestCart = ({ contest }) => {
-  const { name, img, attempted, type, description, _id } = contest;
-
+  const { name, image, attempted, type, description, _id } = contest;
+// console.log(contest)
   return (
     <div className="relative flex flex-col text-gray-700 bg-white shadow-md w-96 rounded-xl bg-clip-border">
       <div className="relative h-56 mx-4 -mt-6 overflow-hidden text-white shadow-lg rounded-xl bg-blue-gray-500 bg-clip-border shadow-blue-gray-500/40">
-        <img src={img} alt="img-blur-shadow" />
+        <img src={image} alt="img-blur-shadow" />
       </div>
       <div className="p-6">
         <h5 className="block mb-2 font-sans text-xl antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
